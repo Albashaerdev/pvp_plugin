@@ -1,0 +1,18 @@
+name: PvPSMP
+version: 1.0.0
+main: dev.pvpsmp.PvPSMPPlugin
+api-version: '1.21'
+description: Lifesteal + Strength SMP hybrid with weapon abilities, custom loot, strict PvP rules.
+commands:
+  pvpsmp:
+    description: Admin command
+    usage: /pvpsmp <give|ability|reload>
+    permission: pvpsmp.admin
+  leaderboard:
+    description: Top player kills
+    aliases: [lb, kills]
+  ability:
+    description: Show your ability and cooldowns
+permissions:
+  pvpsmp.admin:
+    default: op

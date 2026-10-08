@@ -1,0 +1,77 @@
+lifesteal:
+  start-hearts: 10
+  min-hearts: 1
+  max-hearts: 20
+
+strength:
+  start-level: 2
+  min-level: 1
+  max-level: 5
+  damage-per-level: 1.5     # vanilla Strength is 3.0 per level
+
+combat:
+  duration-seconds: 10
+  allowed-commands: [msg, w]
+  blocked-items: [ENDER_PEARL]   # "stasis" tools - add more materials here
+  block-pearl-teleport: true
+
+kill-farming:
+  enabled: true
+  kills-threshold: 7
+  window-minutes: 180
+  ban-hours: 3
+  require-proximity: true        # only ban if the pair spent a lot of time together
+  proximity-distance: 30
+  proximity-seconds: 300
+
+abilities:
+  book-cooldown-minutes: 20
+  axe:
+    heal-hearts: 1
+    freeze-seconds: 3
+    freeze-cooldown-seconds: 20
+  sword:
+    crit-streak-reward: 10
+    speed-step: 0.05            # attack speed added per crit in the streak
+    min-cooldown-seconds: 0.5   # attack cooldown never goes below this
+    reward-cooldown-seconds: 60
+    streak-timeout-seconds: 6
+  mace:
+    cooldown-seconds: 10
+    radius: 5.0
+    damage-multiplier: 2.0
+    aoe-damage: 8.0
+    knockback: 1.2
+    smash-fall-distance: 1.5
+  spear:
+    base-speed-bonus: 0.10      # instant bonus when toggled on (+10%)
+    max-speed-bonus: 0.40       # ramps up while walking
+    ramp-per-tick-step: 0.02    # applied every 4 ticks while moving
+    toggle-cooldown-seconds: 1
+
+shield:
+  hits-required: 2
+  hit-window-seconds: 4
+
+potions:
+  shield-breaker-seconds: 180
+  shield-breaker-extended-seconds: 360
+  brew-ticks: 400
+
+armor:
+  protection-level: 5
+  bonus-armor: 1.0
+  bonus-toughness: 1.0
+  knockback-resistance: 1.0     # 1.0 = 100%
+
+loot:
+  nugget-chance: 0.028
+  template-chance: 0.008
+  nugget-tables: [ancient_city, end_city_treasure, ruined_portal, underwater_ruin]
+  trapping-chance: 0.25
+  trapping-items: [COBWEB, OBSIDIAN, POWDER_SNOW_BUCKET, WATER_BUCKET, WIND_CHARGE]
+
+worldgen:
+  debris-veins-per-chunk: 8
+  debris-vein-size: 3
+  deep-dark-diamond-veins-per-chunk: 6

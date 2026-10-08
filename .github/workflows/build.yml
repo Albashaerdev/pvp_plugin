@@ -1,29 +1,37 @@
-name: Build plugin
+name: Build Plugin and Datapack
 
 on:
   push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
         with:
-          distribution: temurin
           java-version: '21'
+          distribution: 'temurin'
           cache: maven
-      - name: Build jar
-        run: mvn -B clean package
-      - name: Zip datapack and resource pack
-        run: |
-          (cd datapack && zip -r ../PvPSMP-Datapack.zip pvpsmp_worldgen)
-          (cd resourcepack && zip -r ../PvPSMP-ResourcePack.zip .)
-      - uses: actions/upload-artifact@v4
+
+      - name: Build Plugin with Maven
+        run: mvn package --file pom.xml
+
+      - name: Zip Datapack
+        run: cd src/main/resources && zip -r ../../../PvPSMP-Datapack.zip pvpsmp_worldgen
+
+      - name: Upload Built Artifacts
+        uses: actions/upload-artifact@v4
         with:
-          name: PvPSMP-all-files
+          name: PvPSMP-Release
           path: |
-            target/PvPSMP.jar
+            target/*.jar
             PvPSMP-Datapack.zip
-            PvPSMP-ResourcePack.zip

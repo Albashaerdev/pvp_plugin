@@ -1,4 +1,4 @@
-name: Build Plugin and Datapack
+name: Build Plugin
 
 on:
   push:
@@ -25,13 +25,8 @@ jobs:
       - name: Build Plugin with Maven
         run: mvn package --file pom.xml
 
-      - name: Zip Datapack
-        run: cd src/main/resources && zip -r ../../../PvPSMP-Datapack.zip pvpsmp_worldgen
-
-      - name: Upload Built Artifacts
+      - name: Upload Built Artifact
         uses: actions/upload-artifact@v4
         with:
           name: PvPSMP-Release
-          path: |
-            target/*.jar
-            PvPSMP-Datapack.zip
+          path: target/*.jar
